@@ -4,9 +4,14 @@ import java.util.List;
 
 public class Lion {
 
+    //Объявляем переменные
     boolean hasMane;
+    private Feline feline;
 
-    public Lion(String sex) throws Exception {
+    //Делаем инъекцию зависимости с помощью конструктора Lion
+    public Lion(String sex, Feline feline) throws Exception {
+        this.feline = feline;
+
         if ("Самец".equals(sex)) {
             hasMane = true;
         } else if ("Самка".equals(sex)) {
@@ -16,16 +21,17 @@ public class Lion {
         }
     }
 
-    Feline feline = new Feline();
-
+    //Описание метода getKittens для семейства кошачьих
     public int getKittens() {
         return feline.getKittens();
     }
 
+    //Описание метода doesHaveMane
     public boolean doesHaveMane() {
         return hasMane;
     }
 
+    //Описание метода getFood
     public List<String> getFood() throws Exception {
         return feline.getFood("Хищник");
     }
